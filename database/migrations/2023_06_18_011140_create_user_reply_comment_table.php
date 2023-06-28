@@ -18,6 +18,8 @@ return new class extends Migration
             $table->foreignId('users_comment_product_id')->constrained('user_comment_products')->nullable();
             $table->integer('user_reply_comment_id')->nullable();
             $table->foreignId('user_id')->constrained('users');
+            $table->string('user_name_reply')->nullable();
+            $table->string('user_photo_reply')->nullable();
             $table->string('comment');
             $table->timestamp('created_at')->nullable();
         });
