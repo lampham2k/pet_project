@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained('products');
             $table->foreignId('rate_id')->constrained('rates');
             $table->primary(array('user_id', 'product_id', 'rate_id'));
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
         });
     }
 

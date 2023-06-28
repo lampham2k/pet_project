@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('photo')->nullable();
             $table->float('price')->nullable();
             $table->foreignId('manufacturer_id')->constrained('manufacturers');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
         });
     }
 

@@ -20,7 +20,7 @@ class ManufacturerFactory extends Factory
             'address'           => $this->faker->streetAddress(),
             'name'              => $this->faker->unique()->randomElement($arrName = ['Nikes', 'Adidass', 'Vanss', 'Guccis', 'Converses']),
             'phone_number'      => null,
-            'photo'             => $this->faker->imageUrl(),
+            'photo'             => null,
         ];
     }
 }

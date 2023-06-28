@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('phone_receiver');
             $table->smallInteger('status')->comment('OrderStatusEnum');
             $table->float('total');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
         });
     }
 

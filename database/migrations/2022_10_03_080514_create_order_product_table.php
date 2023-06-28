@@ -18,7 +18,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained('products');
             $table->integer('quantity');
             $table->float('price');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
             $table->primary(array('order_id', 'product_id'));
         });
     }

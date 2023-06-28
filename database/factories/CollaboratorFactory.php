@@ -23,7 +23,7 @@ class CollaboratorFactory extends Factory
             'email'                 => $this->faker->email(),
             'password'              => Hash::make(123456),
             'gender'                => $this->faker->boolean(),
-            'photo'                 => $this->faker->imageUrl(),
+            'photo'                 => null,
             'birthday'              => null,
             'phone_number'          => null,
             'address'               => $this->faker->streetAddress(),

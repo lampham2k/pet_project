@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('order_discount', function (Blueprint $table) {
             $table->foreignId('order_id')->constrained('orders');
             $table->foreignId('discount_id')->constrained('discounts');
-            $table->timestamp('created_at');
+            $table->timestamp('created_at')->nullable();
             $table->primary(array('order_id', 'discount_id'));
         });
     }
