@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('user_reply_comments', function (Blueprint $table) {
             $table->id()->unsigned();
-            $table->foreignId('users_comment_product_id')->constrained('users_comment_products')->nullable();
+            $table->foreignId('users_comment_product_id')->constrained('user_comment_products')->nullable();
             $table->integer('user_reply_comment_id')->nullable();
             $table->foreignId('user_id')->constrained('users');
             $table->string('comment');
