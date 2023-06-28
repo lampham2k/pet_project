@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('user_comment_products', function (Blueprint $table) {
             $table->id()->unsigned();
             $table->foreignId('user_id')->constrained('users');
-            $table->foreignId('product_id')->constrained('products');
+            $table->string('product_name');
             $table->text('comment')->nullable();
             $table->timestamp('created_at')->nullable();
         });
