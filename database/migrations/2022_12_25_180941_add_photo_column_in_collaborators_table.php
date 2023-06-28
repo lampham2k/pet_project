@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::table('collaborators', function (Blueprint $table) {
             if (!Schema::hasColumn('collaborators', 'photo')) {
-                $table->text('photo')->after('gender');
+                $table->text('photo')->nullable()->after('gender');
             }
         });
     }
