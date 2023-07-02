@@ -14,15 +14,24 @@ class DiscountController extends Controller
     public function products(Request $request)
     {
         try {
-            $products = Product::all();
-            $data = $products->filter(function ($each) use ($request) {
-                if ($request->has('q')) {
-                    return Str::contains(strtolower($each->name), $request->get('q'));
-                }
-                return true;
-            });
+            //select2
+
+
+            $product = Product::query()->select([
+                'id',
+                'name',
+            ]);
+
+            if ($request->has('q')) {
+
+                $product->where('name', 'like', '%' . $request->get('q') . '%');
+            }
+
+            $data = $product->get();
+
             return $this->successResponse($data);
         } catch (\Throwable $th) {
+
             return $this->errorResponse();
         }
     }

@@ -6,6 +6,7 @@ use App\Models\Collaborator;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Http\Controllers\ResponseTrait;
+use Collator;
 
 class CollaboratorController extends Controller
 {
@@ -14,16 +15,26 @@ class CollaboratorController extends Controller
     public function index(Request $request)
     {
         try {
-            $collaborator = Collaborator::all();
-            $data = $collaborator->filter(function ($each) use ($request) {
-                if ($request->has('q')) {
-                    return Str::contains(strtolower($each->name), $request->get('q'));
-                }
-                return true;
-            });
+            //select2
+
+
+            $collaborator = Collaborator::query()->select([
+                'id',
+                'name',
+            ]);
+
+            if ($request->has('q')) {
+
+                $collaborator->where('name', 'like', '%' . $request->get('q') . '%');
+            }
+
+            $data = $collaborator->get();
+
             $data->push(['id' => 0, 'name' => 'Nobody']);
+
             return $this->successResponse($data);
         } catch (\Throwable $th) {
+
             return $this->errorResponse();
         }
     }

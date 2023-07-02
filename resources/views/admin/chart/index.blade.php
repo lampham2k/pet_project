@@ -76,7 +76,6 @@
             <figure class="highcharts-figure">
                 <div id="container"></div>
             </figure>
-
         </div>
     </div>
 </div>
@@ -90,7 +89,6 @@
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
 <script>
     $(document).ready(function(){
-        console.log(1);
         $.ajax({
             url: '{{ route('admin.chart.statistical') }}',
             dataType: 'json',

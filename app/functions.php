@@ -245,49 +245,11 @@ if (!function_exists('dataProductWithDiscount')) {
         {
             date_default_timezone_set('Asia/Ho_Chi_Minh');
 
-            $created_at     = $time;
+            $carbonated_date = Carbon::parse($time);
 
-            $string = '';
+            $diff_date = $carbonated_date->diffForHumans(Carbon::now());
 
-            if ((int)date_format(new DateTime(), "Y") > (int)date('Y', strtotime($created_at))) {
-
-                $string = (int)date_format(new DateTime(), "Y") - (int)date('Y', strtotime($created_at)) . ' years ago';
-            } else {
-
-                if ((int)date_format(new DateTime(), "m") > (int)date('m', strtotime($created_at))) {
-
-                    $string = (int)date_format(new DateTime(), "m") - (int)date('m', strtotime($created_at)) . ' month ago';
-                } else {
-
-                    if ((int)date_format(new DateTime(), "d") > (int)date('d', strtotime($created_at))) {
-
-                        $string = (int)date_format(new DateTime(), "d") - (int)date('d', strtotime($created_at)) . ' days ago';
-                    } else {
-
-                        if ((int)date_format(new DateTime(), "H") > (int)date('H', strtotime($created_at))) {
-
-                            $string = (int)date_format(new DateTime(), "H") - (int)date('H', strtotime($created_at)) . ' hours ago';
-                        } else {
-
-                            if ((int)date_format(new DateTime(), "i") > (int)date('i', strtotime($created_at))) {
-
-                                $string = (int)date_format(new DateTime(), "i") - (int)date('i', strtotime($created_at)) . ' minutes ago';
-                            } else {
-
-                                if ((int)date_format(new DateTime(), "s") > (int)date('s', strtotime($created_at))) {
-
-                                    $string = (int)date_format(new DateTime(), "s") - (int)date('s', strtotime($created_at)) . ' seconds ago';
-                                } else {
-
-                                    $string = 'recently';
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-
-            return $string;
+            return $diff_date;
         }
     }
 }

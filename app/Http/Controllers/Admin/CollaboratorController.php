@@ -21,9 +21,6 @@ class CollaboratorController extends Controller
 
     public function __construct()
     {
-        if (!isSuperAdmin()) {
-            dd("System error");
-        }
         $this->model = Collaborator::query();
         $this->table = (new Collaborator())->getTable();
 
@@ -33,30 +30,10 @@ class CollaboratorController extends Controller
 
     public function index(Request $request)
     {
-        // $customerRole = CustomerRoleEnum::getArrWithUppercase();
-        // $userRole = UserRoleEnum::getArrWithUppercase();
-        // $filterCustomerRole = $request->get('customer_role');
-        // $filterUserRole = $request->get('user_role');
-
-        // $filters = [];
-
-        // if ($request->has('customer_role')) {
-        //     $filters['customer_role'] = $filterCustomerRole;
-        // }
-        // if ($request->has('user_role')) {
-        //     $filters['user_role'] = $filterUserRole;
-        // }
-
-        // $data = $this->model->indexUsers($filters)->paginate(5);
-
         $data = $this->model->paginate(5);
 
         return view("admin.$this->table.index", [
             'data'                  => $data,
-            // 'customerRole'          => $customerRole,
-            // 'userRole'              => $userRole,
-            // 'filterCustomerRole'    => $filterCustomerRole,
-            // 'filterUserRole'        => $filterUserRole,
         ]);
     }
 
